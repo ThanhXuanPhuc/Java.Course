@@ -68,7 +68,7 @@ public class BaiTap18 {
         System.out.println();
     }
     
-    // Định nghĩa phương thức tính giá trị trung bình của các số nguyên tố
+    // Định nghĩa phương thức tính giá trị trung bình của các số nguyên tố......
     public static double tinhTBSoNguyenTo(int[] a) {
         double sum = 0;
         int count = 0;
