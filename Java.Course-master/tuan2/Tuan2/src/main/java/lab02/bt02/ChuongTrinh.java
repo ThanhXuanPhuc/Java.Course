@@ -6,17 +6,18 @@ package lab02.bt02;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Comparator;
+import java.util.Collections;
 
-/**
- *
- * @author ADMIN
- */
 public class ChuongTrinh {
 
     public static ArrayList<SinhVien> ds = new ArrayList<>();
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        menu();
+    }
+
+    public static void menu() {
         Scanner sc = new Scanner(System.in);
         int chon;
         do {
@@ -54,62 +55,75 @@ public class ChuongTrinh {
     }
 
     private static void nhap() {
-        Scanner sc = new Scanner(System.in);
-        String chon;
-        do {
-            System.out.println("Nhap thong tin sinh vien:");
-            System.out.print("Ho ten: ");
-            String hoTen = sc.nextLine();
-            System.out.print("Nganh (IT/Biz): ");
-            String nganh = sc.nextLine();
+        System.out.println("thuc hien nhap:");
 
-            if (nganh.equalsIgnoreCase("IT")) {
+        Scanner sc = new Scanner(System.in);
+        String tieptuc;
+
+        do {
+            System.out.println("Cho biet loai sinh vien (IT:1,Biz:2): ");
+            int chon = Integer.parseInt(sc.nextLine());
+            SinhVien sv = null;
+            if (chon == 1) {
+
+                //1. Nhap thong tin
+                System.out.println("Cho biet ho ten:");
+                String hoTen = sc.nextLine();
                 System.out.print("Diem Java: ");
-                double java = sc.nextDouble();
+                double java = Double.parseDouble(sc.nextLine());
                 System.out.print("Diem HTML: ");
-                double html = sc.nextDouble();
+                double html = Double.parseDouble(sc.nextLine());
                 System.out.print("Diem CSS: ");
-                double css = sc.nextDouble();
-                sc.nextLine();  // Đọc bỏ dòng trống
-                ds.add(new SinhVienIT(java, css, html, hoTen, nganh));
-            } else if (nganh.equalsIgnoreCase("Biz")) {
+                double css = Double.parseDouble(sc.nextLine());
+
+                sv = new SinhVienIT(hoTen, java, css, html);
+            } else if (chon == 2) {
+                System.out.println("Cho biet ho ten:");
+                String hoTen = sc.nextLine();
                 System.out.print("Diem Marketing: ");
-                double marketing = sc.nextDouble();
+                double marketing = Double.parseDouble(sc.nextLine());
                 System.out.print("Diem Sales: ");
-                double sales = sc.nextDouble();
-                sc.nextLine();  // Đọc bỏ dòng trống
-                ds.add(new SinhVienBiz(marketing, sales, hoTen, nganh));
-            } else {
-                System.out.println("Nganh khong hop le!");
+                double sales = Double.parseDouble(sc.nextLine());
+
+                sv = new SinhVienBiz(hoTen, marketing, sales);
+            }
+            //3. Them SV
+            if (sv != null) {
+                ds.add(sv);
             }
 
-            System.out.print("Tiep tuc nhap sinh vien khac khong? (Y/N): ");
-            chon = sc.nextLine();
-        } while (chon.equalsIgnoreCase("Y"));
-
+            System.out.println("Tiep tuc (Y/N?");
+            tieptuc = sc.nextLine();
+        } while (tieptuc.equalsIgnoreCase("y"));
     }
 
     private static void xuat() {
-        System.out.println("Danh sach sinh vien:");
+        System.out.println("Thuc hien xuat danh sach sinh vien:");
         for (SinhVien sv : ds) {
-            System.out.println("Ho ten: " + sv.hoten + " " + " Nganh: "  + sv.nganh + " " + "Diem: "  + sv.getDiem() + " " + "Hoc luc: "  + sv.getHocLuc());
+            sv.Xuat();
         }
     }
 
     private static void xuatHocLucGioi() {
-        System.out.println("Danh sach sinh vien co hoc luc gioi:");
+        System.out.println("Thuc hien xuat danh sach sinh vien hoc luc gioi:");
         for (SinhVien sv : ds) {
             if (sv.getHocLuc().equals("Gioi") || sv.getHocLuc().equals("Xuất sắc")) {
-            System.out.println("Ho ten: " + sv.hoten + " " + " Nganh: "  + sv.nganh + " " + "Diem: "  + sv.getDiem() + " " + "Hoc luc: "  + sv.getHocLuc());
+                sv.Xuat();
             }
         }
 
     }
 
     private static void sapXep() {
-        ds.sort((sv1, sv2) -> Double.compare(sv2.getDiem(), sv1.getDiem()));
-        System.out.println("Danh sach sinh vien sau khi xep theo diem:");
+        System.out.println("thuc hien sap xep:");
+        //dinh nghia tieu chi sap xep tren sinhvien
+        Comparator<SinhVien> cmp = new Comparator<SinhVien>() {
+            @Override
+            public int compare(SinhVien sv1, SinhVien sv2) {
+                return Double.compare(sv1.getDiem(), sv2.getDiem());
+            }
+        };
+        Collections.sort(ds, cmp);
         xuat();
     }
-
 }

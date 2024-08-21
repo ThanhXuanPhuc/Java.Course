@@ -13,8 +13,8 @@ public class SinhVienBiz extends SinhVien{
     public double diemMarketing;
     public double diemSales;
 
-    public SinhVienBiz(double diemMarketing, double diemSales, String hoten, String nghanh) {
-        super(hoten, nghanh);
+    public SinhVienBiz(String hoTen,double diemMarketing, double diemSales) {
+        super(hoTen, "Biz");
         this.diemMarketing = diemMarketing;
         this.diemSales = diemSales;
     }

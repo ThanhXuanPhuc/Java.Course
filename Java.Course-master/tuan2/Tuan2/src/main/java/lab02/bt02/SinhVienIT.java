@@ -14,8 +14,8 @@ public class SinhVienIT extends SinhVien{
     public  double css;
     public double html;
 
-    public SinhVienIT(double java, double css, double html, String hoten, String nganh) {
-        super(hoten, nganh);
+    public SinhVienIT(String hoTen, double java, double css, double html) {
+        super(hoTen, "IT");
         this.java = java;
         this.css = css;
         this.html = html;
