@@ -36,7 +36,7 @@ public class TuyenSinh {
                     timKiemTS();
                     break;
                 case 4:
-                    System.out.print("\nGoodbye. Thanks for using our program!");
+                    System.out.print("\nGoodbye. See you again!");
                     break;
             }
         }

@@ -18,6 +18,23 @@ public class Oto extends PhuongTien {
         this.dongCo = dongCo;
     }
 
+    public int getSoChoNgoi() {
+        return soChoNgoi;
+    }
+
+    public void setSoChoNgoi(int soChoNgoi) {
+        this.soChoNgoi = soChoNgoi;
+    }
+
+    public String getDongCo() {
+        return dongCo;
+    }
+
+    public void setDongCo(String dongCo) {
+        this.dongCo = dongCo;
+    }
+    
+
     @Override
     public String toString() {
         return super.toString() + ", soChoNgoi=" + soChoNgoi + ", dongCo=" + dongCo + " }";

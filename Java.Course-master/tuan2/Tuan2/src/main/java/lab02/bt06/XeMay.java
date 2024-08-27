@@ -16,6 +16,15 @@ public class XeMay extends PhuongTien {
         this.congSuat = congSuat;
     }
 
+    public double getCongSuat() {
+        return congSuat;
+    }
+
+    public void setCongSuat(double congSuat) {
+        this.congSuat = congSuat;
+    }
+    
+
     @Override
     public String toString() {
         return super.toString() + ", congSuat=" + congSuat + " }";

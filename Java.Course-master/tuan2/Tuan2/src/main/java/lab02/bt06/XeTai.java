@@ -16,6 +16,15 @@ public class XeTai extends PhuongTien {
         this.trongTai = trongTai;
     }
 
+    public double getTrongTai() {
+        return trongTai;
+    }
+
+    public void setTrongTai(double trongTai) {
+        this.trongTai = trongTai;
+    }
+
+    
     @Override
     public String toString() {
         return super.toString() + ", trongTai=" + trongTai + " }";
